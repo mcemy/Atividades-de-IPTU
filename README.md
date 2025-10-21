@@ -1,6 +1,18 @@
 # Automação de Atividades IPTU - Pipedrive
 
+![Google Apps Script](https://img.shields.io/badge/Google%20Apps%20Script-4285F4?style=for-the-badge&logo=google&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Pipedrive](https://img.shields.io/badge/Pipedrive-00A86B?style=for-the-badge&logo=pipedrive&logoColor=white)
+![Google Sheets](https://img.shields.io/badge/Google%20Sheets-34A853?style=for-the-badge&logo=google-sheets&logoColor=white)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?style=flat-square)](https://github.com/mcemy/Atividades-de-IPTU)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square)](https://github.com/mcemy/Atividades-de-IPTU/graphs/commit-activity)
+
 Sistema automatizado para criação e gerenciamento de atividades relacionadas ao processo de IPTU no Pipedrive, desenvolvido em Google Apps Script.
+
+> **Status**: ✅ Ativo | 🔄 Em produção | 🚀 Pronto para uso
 
 ## 📋 Sobre o Projeto
 
