@@ -12,7 +12,7 @@
 
 Sistema automatizado para criação e gerenciamento de atividades relacionadas ao processo de IPTU no Pipedrive, desenvolvido em Google Apps Script.
 
-> **Status**: ✅ Ativo | 🔄 Em produção | 🚀 Pronto para uso
+> **Status**: ✅ Ativo | ✅ Finalizado | 🚀 Pronto para uso
 
 ## 📋 Sobre o Projeto
 
