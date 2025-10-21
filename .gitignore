@@ -1,0 +1,49 @@
+# Logs
+*.log
+
+# Arquivos de configuração local
+.env
+config.json
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# IDEs e Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node.js (caso seja usado futuramente)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos de backup
+*.backup
+*.bak
+
+# Arquivos com dados sensíveis
+secrets.json
+credentials.json
+api-keys.txt
+
+# Arquivos de teste local
+test-config.json
+local-settings.json
+
+# Diretórios de build (caso necessário no futuro)
+dist/
+build/
+out/
+
+# Arquivos de cache
+.cache/
+*.cache
