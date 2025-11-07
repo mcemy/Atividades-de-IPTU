@@ -6,7 +6,7 @@
 ![Google Sheets](https://img.shields.io/badge/Google%20Sheets-34A853?style=for-the-badge&logo=google-sheets&logoColor=white)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?style=flat-square)](https://github.com/mcemy/Atividades-de-IPTU)
+[![Version](https://img.shields.io/badge/version-4.1.0-blue.svg?style=flat-square)](https://github.com/mcemy/Atividades-de-IPTU)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square)](https://github.com/mcemy/Atividades-de-IPTU/graphs/commit-activity)
 
@@ -24,7 +24,10 @@ Este sistema automatiza a criação de atividades para acompanhamento do process
 - **Gestão de Cronogramas**: Diferentes fluxos para CEF e Cliente final
 - **Webhooks**: Processamento de eventos do Pipedrive em tempo real
 - **Priorização Inteligente**: Classificação automática de prioridades das atividades
-- **Controle de Duplicatas**: Prevenção de criação de atividades duplicadas
+- **Controle de Duplicatas**: Prevenção de criação de atividades duplicadas com sistema de cache 3 camadas
+- **👤 Atribuição Específica**: Atividades sempre criadas para usuário específico (configurável)
+- **🗂️ Filtro por Funil/Etapa**: Processa apenas deals no funil e etapa corretos
+- **🧪 Modo Teste**: Suporte para testes com deal específico
 - **Logs Detalhados**: Sistema de logging para auditoria e troubleshooting
 
 ## 🚀 Tecnologias Utilizadas
@@ -43,6 +46,7 @@ Este sistema automatiza a criação de atividades para acompanhamento do process
 │   └── webhook.gs       # Manipulador de webhooks do Pipedrive
 ├── .env.example         # Exemplo de configuração de ambiente
 ├── .gitignore          # Arquivos ignorados pelo Git
+├── SETUP.md            # Guia de configuração detalhado
 └── README.md           # Documentação do projeto
 ```
 
