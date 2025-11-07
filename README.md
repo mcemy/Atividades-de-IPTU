@@ -25,9 +25,9 @@ Este sistema automatiza a criação de atividades para acompanhamento do process
 - **Webhooks**: Processamento de eventos do Pipedrive em tempo real
 - **Priorização Inteligente**: Classificação automática de prioridades das atividades
 - **Controle de Duplicatas**: Prevenção de criação de atividades duplicadas com sistema de cache 3 camadas
-- **👤 Atribuição Específica**: Atividades sempre criadas para usuário específico (configurável)
-- **🗂️ Filtro por Funil/Etapa**: Processa apenas deals no funil e etapa corretos
-- **🧪 Modo Teste**: Suporte para testes com deal específico
+- **Atribuição Específica**: Atividades sempre criadas para usuário específico (configurável)
+- **Filtro por Funil/Etapa**: Processa apenas deals no funil e etapa corretos
+- **Modo Teste**: Suporte para testes com deal específico
 - **Logs Detalhados**: Sistema de logging para auditoria e troubleshooting
 
 ## 🚀 Tecnologias Utilizadas
@@ -166,15 +166,6 @@ O sistema registra todas as operações em planilhas do Google Sheets:
 2. **Webhooks não funcionando**: Confirme a URL do Web App
 3. **Problemas de token**: Verifique validade do token do Pipedrive
 
-## 🤝 Contribuição
-
-Para contribuir com o projeto:
-
-1. Faça um fork do repositório
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
 
 ## 📝 Licença
 
