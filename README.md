@@ -19,6 +19,18 @@ Este sistema automatiza a criação de atividades para acompanhamento do process
 - **Horários Padronizados**: Todas as atividades vencem às **23:59 (horário local)**
 - **Anti-duplicação**: Evita criação de atividades duplicatas
 - **Backlog Automático**: Cria atividades vencidas quando necessário
+- **Controle de Duplicatas**: Prevenção de criação de atividades duplicadas com sistema de cache 3 camadas
+- **Atribuição Específica**: Atividades sempre criadas para usuário específico (configurável)
+- **Filtro por Funil/Etapa**: Processa apenas deals no funil e etapa corretos
+- **Modo Teste**: Suporte para testes com deal específico
+- **Logs Detalhados**: Sistema de logging para auditoria e troubleshooting
+
+## 🚀 Tecnologias Utilizadas
+
+- **Google Apps Script (GAS)**: Plataforma de desenvolvimento
+- **Pipedrive API**: Integração com CRM
+- **Google Sheets**: Logging e auditoria
+- **JavaScript**: Linguagem de programação
 
 ## 📁 Estrutura do Projeto
 
