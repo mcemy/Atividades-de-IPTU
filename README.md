@@ -1,18 +1,8 @@
-# Automação de Atividades IPTU - Pipedrive
-
-![Google Apps Script](https://img.shields.io/badge/Google%20Apps%20Script-4285F4?style=for-the-badge&logo=google&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Pipedrive](https://img.shields.io/badge/Pipedrive-00A86B?style=for-the-badge&logo=pipedrive&logoColor=white)
-![Google Sheets](https://img.shields.io/badge/Google%20Sheets-34A853?style=for-the-badge&logo=google-sheets&logoColor=white)
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-4.1.0-blue.svg?style=flat-square)](https://github.com/mcemy/Atividades-de-IPTU)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square)](https://github.com/mcemy/Atividades-de-IPTU/graphs/commit-activity)
-
-Sistema automatizado para criação e gerenciamento de atividades relacionadas ao processo de IPTU no Pipedrive, desenvolvido em Google Apps Script.
+# 🏠 Atividades de IPTU - Sistema Automatizado
 
 > **Status**: ✅ Ativo | ✅ Finalizado | 🚀 Pronto para uso
+
+Sistema automatizado para criação e gerenciamento de atividades relacionadas ao processo de IPTU no Pipedrive, desenvolvido em Google Apps Script.
 
 ## 📋 Sobre o Projeto
 
@@ -24,170 +14,212 @@ Este sistema automatiza a criação de atividades para acompanhamento do process
 - **Gestão de Cronogramas**: Diferentes fluxos para CEF e Cliente final
 - **Webhooks**: Processamento de eventos do Pipedrive em tempo real
 - **Priorização Inteligente**: Classificação automática de prioridades das atividades
-- **Controle de Duplicatas**: Prevenção de criação de atividades duplicadas com sistema de cache 3 camadas
-- **👤 Atribuição Específica**: Atividades sempre criadas para usuário específico (configurável)
-- **🗂️ Filtro por Funil/Etapa**: Processa apenas deals no funil e etapa corretos
-- **🧪 Modo Teste**: Suporte para testes com deal específico
-- **Logs Detalhados**: Sistema de logging para auditoria e troubleshooting
-
-## 🚀 Tecnologias Utilizadas
-
-- **Google Apps Script (GAS)**: Plataforma de desenvolvimento
-- **Pipedrive API**: Integração com CRM
-- **Google Sheets**: Logging e auditoria
-- **JavaScript**: Linguagem de programação
+- **Webhook Integrado**: Responde automaticamente a mudanças nos negócios
+- **Filtros Inteligentes**: Processa apenas negócios em funis/etapas específicas
+- **Horários Padronizados**: Todas as atividades vencem às **23:59 (horário local)**
+- **Anti-duplicação**: Evita criação de atividades duplicatas
+- **Backlog Automático**: Cria atividades vencidas quando necessário
 
 ## 📁 Estrutura do Projeto
 
 ```
-.
+Atividades-de-IPTU/
 ├── src/
-│   ├── main.gs          # Lógica principal de automação
-│   └── webhook.gs       # Manipulador de webhooks do Pipedrive
-├── .env.example         # Exemplo de configuração de ambiente
-├── .gitignore          # Arquivos ignorados pelo Git
-├── SETUP.md            # Guia de configuração detalhado
-└── README.md           # Documentação do projeto
+│   ├── main.gs          # Lógica principal (30 funções) - 39KB
+│   └── webhook.gs       # Handlers HTTP e logging (7 funções) - 6KB
+├── README.md            # Este arquivo - 8KB
+└── SETUP.md            # Instruções de configuração - 4KB
 ```
 
-## ⚙️ Configuração
+### **main.gs** - Business Logic
 
-### 1. Pré-requisitos
+Contém toda a lógica de negócio do sistema:
 
-- Conta no Google (para Google Apps Script)
-- Acesso ao Pipedrive com permissões de API
-- Token de API do Pipedrive
+- Processamento de deals e criação de atividades
+- Cronogramas específicos (CEF vs Cliente)
+- Integração com API do Pipedrive
+- Validações e verificações de duplicatas
+- Funções utilitárias de data e timezone
 
-### 2. Variáveis de Ambiente
+### **webhook.gs** - HTTP Handlers
 
-Crie um arquivo `.env` baseado no `.env.example` e configure as seguintes variáveis:
+Apenas handlers básicos e funções de suporte:
 
-```env
-# API do Pipedrive
-PIPEDRIVE_API_TOKEN=seu_token_aqui
-PIPEDRIVE_BASE_URL=https://api.pipedrive.com/v1
+- `doPost()` e `doGet()` para webhooks
+- Logging para Google Sheets
+- Cache management
+- Debug e error handling
 
-# Configurações Gerais
-TIMEZONE=America/Sao_Paulo
-ACTIVITY_TYPE_KEY=escritura
+## ⏰ Configuração de Horários
 
-# Google Sheets (para logs)
-SHEET_ID=id_da_planilha_de_logs
-
-# IDs dos Campos Personalizados (obtidos via API)
-FIELD_DATA_TERMINO_TRIAGEM=campo_id
-FIELD_DATA_TERMINO_IPTU=campo_id
-FIELD_STATUS_IPTU=campo_id
-FIELD_IPTU_RESPONSABILIDADE=campo_id
-```
-
-### 3. Instalação no Google Apps Script
-
-1. Acesse [Google Apps Script](https://script.google.com/)
-2. Crie um novo projeto
-3. Copie o conteúdo dos arquivos `src/main.gs` e `src/webhook.gs`
-4. Configure as propriedades do script com suas variáveis de ambiente
-5. Configure os triggers necessários
-
-### 4. Configuração de Propriedades do Script
-
-No Google Apps Script, vá em **Configurações** > **Propriedades do Script** e adicione:
-
-```
-PIPEDRIVE_API_TOKEN: seu_token_do_pipedrive
-PIPEDRIVE_BASE_URL: https://api.pipedrive.com/v1
-TIMEZONE: America/Sao_Paulo
-ACTIVITY_TYPE_KEY: escritura
-SHEET_ID: id_da_sua_planilha_de_logs
-```
-
-## 🔧 Como Usar
-
-### Execução Manual
-
-Para testar o sistema com um negócio específico:
+**IMPORTANTE**: Todas as atividades foram padronizadas para vencer às **02:59 UTC** (equivale a 23:59 no fuso horário brasileiro UTC-3).
 
 ```javascript
-// Execute no editor do Google Apps Script
-testarNegocio(ID_DO_NEGOCIO);
+// Configuração em todos os PLANs
+time: "02:59"; // 23:59 horário local (Brasília)
 ```
 
-### Execução Automática
+## 🔧 Configuração
 
-Configure um trigger para executar a função `tick()` periodicamente:
+### Variáveis de Ambiente
 
-1. No Google Apps Script, vá em **Triggers**
-2. Crie um novo trigger
-3. Selecione a função `tick`
-4. Configure para executar a cada hora (ou conforme necessário)
+```javascript
+// Google Apps Script Properties
+PIPEDRIVE_TOKEN = "seu_token_aqui";
+TIMEZONE = "America/Sao_Paulo";
+USUARIO_ATIVIDADES_EMAIL = "seu_email@dominio.com";
+FUNIL_NOME = "pos arrematação";
+ETAPA_NOME = "contrato";
+SHEET_ID = "id_da_planilha_logs";
+TEST_DEAL_ID = "id_deal_teste"; // opcional
+```
 
-### Webhook do Pipedrive
+### Configuração de Webhook
 
-Para receber eventos em tempo real:
+1. Configure o webhook no Pipedrive para apontar para a URL do Google Apps Script
+2. Selecione os eventos: `deal.updated`
+3. O sistema filtrará automaticamente pelos campos configurados
 
-1. Deploy o script como Web App
-2. Configure o webhook no Pipedrive apontando para a URL do Web App
-3. Configure os eventos desejados (deal.updated, etc.)
+## 📊 Cronogramas de Atividades
 
-## 📊 Fluxos de Trabalho
+### IPTU CEF (Responsabilidade: Caixa Econômica)
 
-### IPTU - Responsabilidade CEF
+**Status: Iniciar**
 
-1. **Dia 1**: Início do processo e tentativas virtuais
-2. **Dia 2**: Confirmação de tentativas remotas
-3. **Dia 4**: Verificação de necessidade de diligência
-4. **Dia 6**: Confirmação de emissão
-5. **Dia 7**: Envio da documentação
-6. **Dia 9-11**: Alertas e acompanhamento
+- Dia 1: Ligar solicitando os documentos (Prioridade: 3)
+- Dia 2: Segunda ligação solicitando os documentos (Prioridade: 3)
+- Dia 3: Terceira ligação solicitando os documentos (Prioridade: 3)
+- Dia 4: Quarta ligação solicitando os documentos (Prioridade: 2)
+- Dia 5: Quinta ligação solicitando os documentos (Prioridade: 1)
 
-### IPTU - Responsabilidade Cliente
+**Status: Boleto Enviado**
 
-Similar ao fluxo CEF, mas com adaptações específicas para quando o cliente é responsável pelo pagamento.
+- Dia 1: Ligar informando o boleto para pagamento (Prioridade: 3)
+- Dia 2: Segunda ligação informando o boleto para pagamento (Prioridade: 2)
+- Dia 3: Terceira ligação informando o boleto para pagamento (Prioridade: 1)
 
-### Status Específicos
+**Status: Solicitar CND**
 
-- **Boleto Enviado**: Verificação de retorno
-- **Pendência Documental**: Correção e reenvio
-- **Ateste Recebido**: Emissão de CND
-- **Solicitar CND**: Finalização do processo
+- Dia 1: Ligar solicitando a CND (Prioridade: 3)
+- Dia 2: Segunda ligação solicitando a CND (Prioridade: 2)
+- Dia 3: Terceira ligação solicitando a CND (Prioridade: 1)
 
-## 🛠️ Manutenção
+**Status: Pendência Documental**
 
-### Logs e Monitoramento
+- Dia 1: Ligar para resolver pendência (Prioridade: 1)
 
-O sistema registra todas as operações em planilhas do Google Sheets:
+**Status: Ateste Recebido**
 
-- **WebhookLog**: Registros de webhooks recebidos
-- **WebhookErrors**: Erros e exceções
+- Dia 1: Ligar agradecendo o ateste (Prioridade: 3)
 
-### Troubleshooting
+### IPTU Cliente (Responsabilidade: Arrematante)
 
-1. **Atividades não sendo criadas**: Verifique os logs de execução
-2. **Webhooks não funcionando**: Confirme a URL do Web App
-3. **Problemas de token**: Verifique validade do token do Pipedrive
+**Status: Iniciar**
 
-## 🤝 Contribuição
+- Dia 1: Ligar solicitando os documentos (Prioridade: 3)
+- Dia 5: Quinta ligação solicitando os documentos (Prioridade: 1)
 
-Para contribuir com o projeto:
+**Status: Boleto Enviado**
 
-1. Faça um fork do repositório
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
+- Dia 1: Ligar informando o boleto para pagamento (Prioridade: 3)
+- Dia 3: Terceira ligação informando o boleto para pagamento (Prioridade: 1)
 
-## 📝 Licença
+**Status: Solicitar CND**
 
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+- Dia 1: Ligar solicitando a CND (Prioridade: 3)
+- Dia 3: Terceira ligação solicitando a CND (Prioridade: 1)
 
-## 🆘 Suporte
+## 🔄 Webhook - Eventos Processados
 
-Para suporte e dúvidas:
+O sistema responde aos seguintes eventos do Pipedrive:
 
-- Abra uma [issue](https://github.com/mcemy/Atividades-de-IPTU/issues) no GitHub
-- Consulte a documentação do [Pipedrive API](https://developers.pipedrive.com/docs/api/v1)
-- Documentação do [Google Apps Script](https://developers.google.com/apps-script)
+### Mudanças de Status
+
+- **Iniciar** → Cria cronograma inicial
+- **Boleto Enviado** → Cria cronograma de cobrança
+- **Solicitar CND** → Cria cronograma de solicitação
+- **Pendência Documental** → Cria atividade de resolução
+- **Ateste Recebido** → Cria atividade de agradecimento
+
+### Mudanças de Responsabilidade
+
+- **CEF ↔ Cliente** → Remove atividades incompatíveis e cria novas
+
+### Filtros Aplicados
+
+- **Funil**: "pos arrematação"
+- **Etapa**: "contrato"
+- **Campos obrigatórios**: Data de término da triagem preenchida
+
+## 📈 Funcionalidades Avançadas
+
+### Anti-duplicação
+
+- Verificação por fingerprint (dealId + subject normalizado)
+- Cache em memória e persistente
+- Detecção inteligente de atividades similares
+
+### Processamento de Backlog
+
+- Criação de atividades vencidas quando necessário
+- Próximo dia útil para datas de vencimento
+- Respeito a finais de semana e feriados
+
+### Logging Inteligente
+
+- **WebhookLog**: Registros de sucesso
+- **WebhookErrors**: Erros de processamento
+- **WebhookDebug**: Informações detalhadas
+- Rotação automática de logs (limites configuráveis)
+
+## 🔧 Funções Principais
+
+### main.gs - Funções Essenciais
+
+```javascript
+tick(); // Processamento manual/cronometrado
+testarNegocio(id); // Teste de um negócio específico
+processWebhookData(e); // Processamento de webhooks
+createActivity_(); // Criação de atividades
+getPlansToCreate_(); // Determinação de cronogramas
+```
+
+### webhook.gs - Funções de Suporte
+
+```javascript
+doPost(e); // Handler principal de webhook
+webhookLog_(); // Logging de sucessos
+webhookError_(); // Logging de erros
+webhookDebug_(); // Logging de debug
+clearWebhookCache(); // Limpeza de cache
+```
+
+## 🎯 Melhorias Implementadas na v2.0
+
+### ✅ Concluídas
+
+- [x] **Padronização de Horários**: Todas as atividades às 02:59 UTC (23:59 local)
+- [x] **Remoção de Duplicatas**: Código completamente limpo
+- [x] **Arquitetura Modular**: main.gs (business) + webhook.gs (handlers)
+- [x] **Documentação Atualizada**: README completo com nova estrutura
+- [x] **Backup Seguro**: Preservação do código original
+
+### 🏆 Resultados
+
+- **Redução de Código**: 72KB → 45KB total (37% menor)
+- **Arquivos Limpos**: Apenas 2 arquivos principais (main.gs + webhook.gs)
+- **Funções Organizadas**: 30 em main.gs + 7 em webhook.gs
+- **Performance**: Eliminação de códigos duplicados
+- **Manutenibilidade**: Separação clara de responsabilidades
+
+## 📞 Suporte
+
+Para dúvidas ou problemas:
+
+1. Verifique os logs na planilha configurada
+2. Use as funções de debug disponíveis
+3. Consulte a documentação de configuração (SETUP.md)
 
 ---
 
-**Desenvolvido para otimizar processos de IPTU e melhorar a produtividade da equipe.**
+**Versão**: 2.0 | **Última atualização**: Novembro 2025
