@@ -344,8 +344,6 @@ clearWebhookCache(); // Limpeza de cache
 
 ### 🏷️ **Versão 2.0** | 📅 **Novembro 2025**
 
-**Desenvolvido com ❤️ para automação de processos IPTU**
-
 [![Feito com Google Apps Script](https://img.shields.io/badge/Feito%20com-Google%20Apps%20Script-4285F4?style=flat-square&logo=google)](https://script.google.com/)
 [![Powered by Pipedrive](https://img.shields.io/badge/Powered%20by-Pipedrive-FF6B35?style=flat-square&logo=pipedrive)](https://www.pipedrive.com/)
 
