@@ -319,24 +319,6 @@ clearWebhookCache(); // Limpeza de cache
 
 </div>
 
----
-
-## 📞 **Suporte & Contribuição**
-
-<div align="center">
-
-[![Issues](https://img.shields.io/github/issues/mcemy/Atividades-de-IPTU?style=for-the-badge)](https://github.com/mcemy/Atividades-de-IPTU/issues)
-[![Pull Requests](https://img.shields.io/github/issues-pr/mcemy/Atividades-de-IPTU?style=for-the-badge)](https://github.com/mcemy/Atividades-de-IPTU/pulls)
-[![Contributors](https://img.shields.io/github/contributors/mcemy/Atividades-de-IPTU?style=for-the-badge)](https://github.com/mcemy/Atividades-de-IPTU/graphs/contributors)
-
-</div>
-
-### 🆘 **Para dúvidas ou problemas:**
-
-1. 📋 Verifique os logs na planilha configurada
-2. 🔍 Use as funções de debug disponíveis
-3. 📖 Consulte a documentação de configuração (SETUP.md)
-4. 🐛 Abra uma [issue](https://github.com/mcemy/Atividades-de-IPTU/issues) se necessário
 
 ---
 
